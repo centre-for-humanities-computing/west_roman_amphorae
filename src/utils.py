@@ -77,7 +77,7 @@ def year_freq_series(
         index_name (str):  The name of the rows of the output Series. Can be set up (by default = 'Year').
 
     Returns:
-        pd.Series: A one-dimensional labeled array with density frequncy values summed across existing amphora types for each year.
+        pd.Series: A one-dimensional labeled array with density frequency values summed across existing amphora types for each year.
     """
 
     minimum = data[lower_date].min()
@@ -232,3 +232,30 @@ def plot_graph(
             linestyle=linestyle,
         )
 
+
+
+def categorize_province(h1_province:str) -> str:
+    """
+    Function used for creating a column where provinces are categorized as West or East.
+    """
+
+    if h1_province in ["Italy", "Baetica", "Narbonense", "Lyonense", "Tarraconensis", "Africa"]:
+        origin = "West"
+    else:
+        origin = "East"
+    
+    return origin
+
+
+
+def categorize_region(h2_region:str) -> str:
+    """
+    Function used for creating a column where regions are categorized as West or East.
+    """
+
+    if h2_region in ["Campania", "Laietania", "Venetia", "Histra", "Coast Cadiz", "Guadalquivir", "Narbonense", "Lyonese", "Tarraconensis", "Africa"]:
+        origin = "West"
+    else:
+        origin = "East"
+    
+    return origin
