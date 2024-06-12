@@ -160,7 +160,7 @@ def year_type_count_series(
     data: pd.DataFrame,
     lower_date: str,
     upper_date: str,
-    name: str = "Site count",
+    name: str = "Type count",
     index_name: str = "Year",
 ) -> pd.Series:
     """
@@ -170,7 +170,7 @@ def year_type_count_series(
         data (pd.DataFrame): A pandas dataframe.
         lower_date (str): The name of the dataframe column containing start dates.
         upper_date (str): The name of the dataframe column containing end dates.
-        name (str): The name of the output Series. Can be set up (by default = 'Site count').
+        name (str): The name of the output Series. Can be set up (by default = 'Type count').
         index_name (str): The name of the rows of the output Series. Can be set up (by default = 'Year').
 
     Returns:
@@ -248,7 +248,7 @@ def categorize_province(h1_province:str) -> str:
 
 
 
-def categorize_region(h2_region:str) -> str:
+def categorize_region_east_west(h2_region:str) -> str:
     """
     Function used for creating a column where regions are categorized as West or East.
     """
@@ -259,3 +259,18 @@ def categorize_region(h2_region:str) -> str:
         origin = "East"
     
     return origin
+
+
+
+def categorize_region_lq_hq(h2_region:str) -> str:
+    """
+    Function used for creating a column where regions are categorized high or low quality.
+    """
+
+    if h2_region in ["Rhodes", "Campania", "Kos"]:
+        quality = "High quality"
+    else:
+        quality = "Low quality"
+    
+    return quality
+
