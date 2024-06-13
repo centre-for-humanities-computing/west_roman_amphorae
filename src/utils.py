@@ -1,6 +1,7 @@
 """ Utility functions"""
 
 import pandas as pd
+import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 sns.set_theme()
@@ -223,6 +224,42 @@ def plot_graph(
 
     for key, colour in zip(dict_w_series.keys(), palette):
         data = dict_w_series.get(key)
+        sns.lineplot(
+            data=data,
+            ax=ax,
+            label=key,
+            color=colour,
+            linewidth=linewidth,
+            linestyle=linestyle,
+        )
+
+
+
+def plot_graph_w_jitter(
+        dict_w_series: Dict[str, pd.Series],
+        ax,
+        palette: List[str],
+        linewidth: int = 3,
+        linestyle: str = "solid",
+):
+    """
+    Plot line graphs with a random tiny jitter to avoid overlapping.
+
+    Args:
+        dict_w_series (Dict[str, pd.Series]): A dictionary containing series.
+        ax: Axes or array of Axes.
+        palette (List[str]): A list with colour names for lines.
+        linewidth (int): The width of a line.
+        linestyle (str): The line style f.ex., 'solid' or 'dashed'.
+    """
+
+    np.random.seed(0)
+
+    for key, colour in zip(dict_w_series.keys(), palette):
+        data = dict_w_series.get(key)
+        jitter = np.random.uniform(-0.05, 0.05, 1)
+        data = data + jitter
+
         sns.lineplot(
             data=data,
             ax=ax,
