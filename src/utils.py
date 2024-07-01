@@ -207,7 +207,7 @@ def year_type_count_series(
 def plot_graph(
     dict_w_series: Dict[str, pd.Series],
     ax,
-    palette: List[str],
+    palette: List[str] = ["black", "green", "blue", "red", "orange", "purple", "pink", "lightblue", "limegreen", "grey", "orchid", "saddlebrown"],
     linewidth: int = 3,
     linestyle: str = "solid",
 ):
@@ -238,7 +238,7 @@ def plot_graph(
 def plot_graph_w_jitter(
         dict_w_series: Dict[str, pd.Series],
         ax,
-        palette: List[str],
+        palette: List[str] = ["black", "green", "blue", "red", "orange", "purple", "pink", "lightblue", "limegreen", "grey", "orchid", "saddlebrown"],
         linewidth: int = 3,
         linestyle: str = "solid",
 ):
