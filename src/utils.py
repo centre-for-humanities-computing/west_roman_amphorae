@@ -239,6 +239,7 @@ def plot_graph_w_jitter(
         dict_w_series: Dict[str, pd.Series],
         ax,
         palette: List[str] = ["black", "green", "blue", "red", "orange", "purple", "pink", "lightblue", "limegreen", "grey", "orchid", "saddlebrown"],
+        jitter_bound: float = 0.05,
         linewidth: int = 3,
         linestyle: str = "solid",
 ):
@@ -249,6 +250,7 @@ def plot_graph_w_jitter(
         dict_w_series (Dict[str, pd.Series]): A dictionary containing series.
         ax: Axes or array of Axes.
         palette (List[str]): A list with colour names for lines.
+        jitter_bound (float): The bounds (-jitterbound, jitter_bound) of the uniform distribution from which the jitter is sampled.
         linewidth (int): The width of a line.
         linestyle (str): The line style f.ex., 'solid' or 'dashed'.
     """
@@ -257,7 +259,7 @@ def plot_graph_w_jitter(
 
     for key, colour in zip(dict_w_series.keys(), palette):
         data = dict_w_series.get(key)
-        jitter = np.random.uniform(-0.05, 0.05, 1)
+        jitter = np.random.uniform(-jitter_bound, jitter_bound, 1)
         data = data + jitter
 
         sns.lineplot(
@@ -268,6 +270,23 @@ def plot_graph_w_jitter(
             linewidth=linewidth,
             linestyle=linestyle,
         )
+
+
+
+def calculate_jitter_bound(dict_w_series: Dict[str, pd.Series]) -> float:
+    """
+    Calculate the jitter bound for the plot_graph_w_jitter function.
+
+    Args:
+        dict_w_series (Dict[str, pd.Series]): A dictionary containing series.
+
+    Returns:
+        float: The jitter bound.
+    """
+
+    max_value = max([max(dict_w_series[key]) for key in dict_w_series.keys()])
+
+    return max_value * 0.03
 
 
 
