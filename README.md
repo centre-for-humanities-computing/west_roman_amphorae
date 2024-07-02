@@ -9,7 +9,7 @@ The notebooks are developed in collaboration with the [Center for Humanities Com
 *
 
 ## Data
-The dataset used to create all figures is _Data\_amphorae\_20\_and\_Tarraconensis.csv_ located in the _data_ folder. This is tabular data in which each row represents a unique combination of an amphora type and an excavation site. 
+The dataset used to create all figures is _Data\_amphorae\_20\_and\_Tarraconensis\_7-05-2024.csv_ located in the _data_ folder. This is tabular data in which each row represents a unique combination of an amphora type and an excavation site. 
 <br /> 
 
 <details>
